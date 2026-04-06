@@ -1,2 +1,3 @@
 Hilo 0 creado correctamente
-Error: No se pudo obtener el tipo de protocolo de la peticion
+Error: El fichero image.png no existe en el servidor
+Error: El fichero image2.png no existe en el servidor
