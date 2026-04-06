@@ -1,0 +1,12 @@
+En el fichero srvwww_svc.c generado por rpcgen hay que añadir la 
+variable global documentroot y el código de comprobación de parámetros
+y de comprobacion de que la carpeta cuya ruta esta almacenada en
+documentroot existe.
+
+Ya que cada ejecución de `rpcgen` sobreescribe el fichero, se 
+proporciona un script python (apply_srvwww_svc_patches.py) que aplica
+los cambios necesarios para reintroducir el código en el fichero
+generado.
+
+Este script python es invocado automáticamente desde el Makefile
+(requiere tener instalado python3)

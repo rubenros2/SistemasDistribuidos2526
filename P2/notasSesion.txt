@@ -1,0 +1,20 @@
+Al hacer un fork (se guarda en una variable pid_t):
+- Si es un valor menor que 0 el fork falló
+- Si el valor de retorno del fork es 0 estamos en el proceso hijo
+- Si el valor del fork es mayor que 0 es el padre
+
+El fork comienza a ejecutar en la siguiente instrucción al fork() ????
+
+Con la instrucción wait() un proceso padre queda en espera hasta que uno de sus procesos hijos termine. Al retornar,
+la isntrucción wair() retorna el PID del hijo que terminó.
+A wait se le puede pasar una variable de tipo puntero a entero con la dirección de memoria de una variable donde se guardará
+el código de error por el que el proceso hijo terminó
+
+Para generar un exit status se hace con las instrucción exit()
+
+PIPES: mecanismo de comunicación entre procesos de la misma máquina
+- Es unidireccional
+- Ha de haber una relación de jerarquía (padre e hijo) o parentesco (hermanos)
+
+// MODIFICAR EL CÓDIGO DE whosort.c PARA CREAR UN PROGRAMA mipipe.c QUE COJA POR PARÁMETROS LOS COMANDOS QUE SE QUIERAN UNIR Y HACER UN PIPE
+CON ESTOS CONMANDOS (argc controla el bucle y argv tiene los parámetros)

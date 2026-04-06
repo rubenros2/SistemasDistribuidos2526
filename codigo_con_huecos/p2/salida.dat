@@ -1,0 +1,22 @@
+Cliente: 2 lee la peticion WWW: fichconA T
+
+Cliente: 2 El fichero a descargar es fichconA
+Cliente: 2 La descarga del fichero fichconA se realizará mediante protocolo TCP
+Cliente: 2 El fichero fichconA existe en el servidor.
+Cliente: 2 El fichero fichconA tiene un tamaño de 6559 bytes.
+Cliente: 2 Abre el fichero de salida fichconA para escribir.
+Cliente: 2 Pide al servidor un trozo del fichero fichconA a partir del offset 0 de tamaño 1000 bytes
+Cliente: 2 Recibe un trozo del fichero fichconA de tamaño 1000 bytes
+Cliente: 2 Pide al servidor un trozo del fichero fichconA a partir del offset 1000 de tamaño 1000 bytes
+Cliente: 2 Recibe un trozo del fichero fichconA de tamaño 1000 bytes
+Cliente: 2 Pide al servidor un trozo del fichero fichconA a partir del offset 2000 de tamaño 1000 bytes
+Cliente: 2 Recibe un trozo del fichero fichconA de tamaño 1000 bytes
+Cliente: 2 Pide al servidor un trozo del fichero fichconA a partir del offset 3000 de tamaño 1000 bytes
+Cliente: 2 Recibe un trozo del fichero fichconA de tamaño 1000 bytes
+Cliente: 2 Pide al servidor un trozo del fichero fichconA a partir del offset 4000 de tamaño 1000 bytes
+Cliente: 2 Recibe un trozo del fichero fichconA de tamaño 1000 bytes
+Cliente: 2 Pide al servidor un trozo del fichero fichconA a partir del offset 5000 de tamaño 1000 bytes
+Cliente: 2 Recibe un trozo del fichero fichconA de tamaño 1000 bytes
+Cliente: 2 Pide al servidor un trozo del fichero fichconA a partir del offset 6000 de tamaño 559 bytes
+Cliente: 2 Recibe un trozo del fichero fichconA de tamaño 559 bytes
+Cliente: 2 Termina de descargar el fichero fichconA.

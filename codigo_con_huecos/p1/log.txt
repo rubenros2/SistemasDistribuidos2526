@@ -1,0 +1,3 @@
+Hilo 0 creado correctamente
+Hilo 1 creado correctamente
+Error: No se pudo obtener el tipo de protocolo de la peticion
