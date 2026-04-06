@@ -393,6 +393,7 @@ void *hilo_descarga(struct sockaddr_in *p)
 
         // Preparar peticion para ver si existe el fichero, y enviarla
         // A RELLENAR
+        chunk_size = chunk_max_size;
 
         sprintf(peticion, "EXISTFILE %s", nomfile);
         s = enviar_peticion(peticion, p, es_stream);
@@ -471,7 +472,7 @@ void *hilo_descarga(struct sockaddr_in *p)
                     if (tamfichero >= 0)
                     {
                         // Abrir fichero localmente para escribir en él lo que se reciba
-                        fdout = open(nomfile, O_WRONLY | O_CREAT, 0644); // Permisos rw-r--r--
+                        fdout = open(nomfile, O_WRONLY | O_CREAT | O_TRUNC, 0644); // Permisos rw-r--r--
                         if (fdout < 0)
                         {
                             print_log("Error: No se pudo abrir el fichero %s para escribir\n", nomfile);
@@ -492,8 +493,21 @@ void *hilo_descarga(struct sockaddr_in *p)
 
                             if (s != NULL)
                             {
+                                if (strcmp(s, "-1") == 0)
+                                {
+                                    print_log("Error: El servidor devolvio error al pedir chunk de %s\n", nomfile);
+                                    free(s);
+                                    close(fdout);
+                                    exit(22);
+                                }
                                 // Escribir en el fichero el chunk recibido
-                                write(fdout, s, chunk_size);
+                                if (write(fdout, s, chunk_size) != chunk_size)
+                                {
+                                    print_log("Error: No se pudo escribir completamente el chunk de %s\n", nomfile);
+                                    free(s);
+                                    close(fdout);
+                                    exit(22);
+                                }
                                 free(s);
                                 offset += chunk_size; // Incrementar el offset
                             }

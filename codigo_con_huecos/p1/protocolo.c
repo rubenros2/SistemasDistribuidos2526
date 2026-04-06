@@ -186,12 +186,6 @@ int recibirStringTCP(int s, char *str, int len)
 		if (recibidos == 0) {
             fprintf(stderr, "La conexión se ha cerrado por el otro extremo\n");
         }
-        else if (recibidos >= len) {
-            str[len-1] = '\0';
-        }
-        else {
-            str[recibidos] = '\0';
-        }
     }
     return recibidos;
 }
@@ -211,13 +205,6 @@ int recibirStringUDP(int s, char *str, int len, struct sockaddr_in *dir)
 		// A RELLENAR
         if (recibidos == 0) {
             fprintf(stderr, "No se han recibido datos en el socket UDP\n");
-            str[0] = '\0';
-        }
-        else if (recibidos >= len) {
-            str[len-1] = '\0';
-        }
-        else {
-            str[recibidos] = '\0';
         }
     }
     return recibidos;

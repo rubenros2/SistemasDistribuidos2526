@@ -270,7 +270,19 @@ void *Worker(int *id)
         // Empezamos a tokenizar el mensaje recibido
         loc = NULL;
 		// A RELLENAR
-		token = strtok_r(pet->msg, " \n\r", &loc);
+        aux = NULL;
+        token = NULL;
+        {
+            char *scan = pet->msg;
+            scan += strspn(scan, " \n\r");
+            if (*scan != '\0')
+            {
+                scan += strcspn(scan, " \n\r");
+                scan += strspn(scan, " \n\r");
+                if (*scan != '\0')
+                    token = strtok_r(pet->msg, " \n\r", &loc);
+            }
+        }
         
         if (token == NULL)
         {
@@ -344,8 +356,10 @@ void *Worker(int *id)
         else if (strcmp(cmd, "GETCHUNK") == 0)
         {
             // A RELLENAR
+			sprintf(msg, "-1");
             if (file_exists(filepath))
             {
+                long fsize;
                 token = strtok_r(NULL, " \n\r", &loc);
                 if (token != NULL)
                 {
@@ -354,24 +368,13 @@ void *Worker(int *id)
                     if (token != NULL)
                     {
                         tam = atoi(token);
-                        if (offset >= 0 && tam > 0)
+                        fsize = get_file_size(filepath);
+                        if ((offset >= 0) && (tam > 0) && (fsize >= 0) && ((offset + tam) <= fsize))
                         {
                             aux = obtener_trozo_fichero(filepath, offset, tam);
-                            if (aux == NULL)
-                                sprintf(msg, "-1");
                         }
-                        else
-                            sprintf(msg, "-1");
                     }
-                    else
-                        sprintf(msg, "-1");
                 }
-                else
-                    sprintf(msg, "-1");
-            }
-            else
-            {
-                sprintf(msg, "-1");
             }
         }
 
@@ -385,7 +388,9 @@ void *Worker(int *id)
             // (lo que libera un descriptor a tener en cuenta en el semáforo)
 			// A RELLENAR
             if ((strcmp(cmd, "GETFILE") == 0) && (strcmp(msg, "200") == 0))
+            {
                 enviar_fichero(filepath, pet->s);
+            }
             else
                 sendStringTCP(pet->s, msg, strlen(msg));
             CerrarSocket(pet->s);    
