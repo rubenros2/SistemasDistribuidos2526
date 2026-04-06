@@ -1,3 +1,7 @@
 Hilo 0 creado correctamente
-Error: El fichero image.png no existe en el servidor
-Error: El fichero image2.png no existe en el servidor
+Hilo 1 creado correctamente
+Hilo 2 creado correctamente
+Hilo 3 creado correctamente
+Hilo 4 creado correctamente
+Error: El fichero noexiste1.png no existe en el servidor
+Error: El fichero noexiste2.png no existe en el servidor
